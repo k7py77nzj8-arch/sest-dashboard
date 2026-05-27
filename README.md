@@ -15,7 +15,7 @@ sest-dashboard/
     └── App.jsx        ← ARCHIVO PRINCIPAL — aquí están todos los datos
 ```
 
-## Actualización diaria
+## Actualización  diaria
 
 El único archivo que se modifica cada día es **`src/App.jsx`**.
 

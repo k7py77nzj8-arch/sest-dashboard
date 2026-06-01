@@ -793,10 +793,148 @@ const DATOS = {
     diaNoInicioN: 3,
     diaNotaSesion: null,
   },
+
+  /* ─────────────────────────────────────────────────────
+     29/05  — reporte completo con acumulados
+  ───────────────────────────────────────────────────── */
+  "29/05": {
+    corte: "29 de mayo de 2026",
+    semana: "Semana 2",
+    soloDialy: false,
+    // Evaluaciones acumuladas
+    evalProgramadas: 51346,
+    evalAplicadas:   28711,   evalAplicadasPct: 55.92,
+    evalReprogramadas: 1715,  evalReprogramadasPct: 3.34,
+    evalAusentes: 592,        evalAusentesPct: 1.15,
+    evalNoAplicado: 239,
+    evalPorAplicar: 20089,    evalPorAplicarPct: 39.12,
+    // Estudiantes acumulados
+    estProgramados: 25673,
+    estAplicados:   14191,    estAplicadosPct: 55.28,
+    estParcial: 329,          estParcialPct: 1.28,
+    estAusentes: 175,
+    estReprogramados: 817,    estReprogramadosPct: 3.18,
+    estPorAplicar: 10044,     estPorAplicarPct: 39.12,
+    globalPie: [
+      { name: "Aplicado",     value: 28711, pct: "55,92%", color: C.aplicado     },
+      { name: "Reprogramado", value: 1715,  pct: "3,34%",  color: C.reprogramado },
+      { name: "Ausente",      value: 592,   pct: "1,15%",  color: C.ausente      },
+      { name: "No aplicado",  value: 239,   pct: "0,47%",  color: C.noAplicado   },
+      { name: "Por aplicar",  value: 20089, pct: "39,12%", color: C.porAplicar   },
+    ],
+    // Subniveles
+    subniveles: [
+      { nivel: "Bachillerato", aplicado: 8755, total: 12480, pct: 70.15 },
+      { nivel: "Superior",     aplicado: 7064, total: 13274, pct: 53.22 },
+      { nivel: "Media",        aplicado: 6444, total: 12902, pct: 49.95 },
+      { nivel: "Elemental",    aplicado: 6448, total: 12690, pct: 50.81 },
+    ],
+    // Sostenimiento
+    sostenimiento: [
+      { tipo: "Municipal",     pct: 60.65, aplicado: 5716,  total: 9424  },
+      { tipo: "Fiscal",        pct: 60.16, aplicado: 10475, total: 17412 },
+      { tipo: "Fiscomisional", pct: 56.23, aplicado: 6318,  total: 11236 },
+      { tipo: "Particular",    pct: 46.72, aplicado: 6202,  total: 13274 },
+    ],
+    // Área
+    areaUrbana: { aplicado: 18031, total: 32716, pct: 55.11 },
+    areaRural:  { aplicado: 10680, total: 18630, pct: 57.33 },
+    // Provincias
+    provincias: [
+      { provincia: "Chimborazo",   pct: 82.75, aplicado: 1473, programado: 1780  },
+      { provincia: "Carchi",       pct: 75.97, aplicado: 1015, programado: 1336  },
+      { provincia: "Pastaza",      pct: 67.77, aplicado: 431,  programado: 636   },
+      { provincia: "Azuay",        pct: 61.73, aplicado: 2541, programado: 4116  },
+      { provincia: "Pichincha",    pct: 61.12, aplicado: 15868,programado: 25964 },
+      { provincia: "Bolívar",      pct: 59.04, aplicado: 209,  programado: 354   },
+      { provincia: "Zamora Ch.",   pct: 58.70, aplicado: 216,  programado: 368   },
+      { provincia: "Cañar",        pct: 55.03, aplicado: 667,  programado: 1212  },
+      { provincia: "Cotopaxi",     pct: 52.76, aplicado: 1109, programado: 2102  },
+      { provincia: "Tungurahua",   pct: 51.13, aplicado: 1674, programado: 3274  },
+      { provincia: "Imbabura",     pct: 43.86, aplicado: 1408, programado: 3210  },
+      { provincia: "Loja",         pct: 43.82, aplicado: 1185, programado: 2704  },
+      { provincia: "Sucumbíos",    pct: 38.64, aplicado: 415,  programado: 1074  },
+      { provincia: "Napo",         pct: 30.03, aplicado: 346,  programado: 1152  },
+      { provincia: "Morona S.",    pct: 16.96, aplicado: 154,  programado: 908   },
+      { provincia: "Orellana",     pct: 0,     aplicado: 0,    programado: 1156  },
+    ],
+    // Labs
+    labTotal: 596,
+    labAplicados: 300,    labAplicadosPct: 50.34,
+    labParcial: 38,       labParcialPct: 6.38,
+    labPorAplicar: 244,   labPorAplicarPct: 40.94,
+    labBajo95: 47,
+    labBajo90: 8,
+    labsBajo95: [
+      { prov: "Pichincha",        n: 28 }, { prov: "Azuay",          n: 4  },
+      { prov: "Carchi",           n: 2  }, { prov: "Chimborazo",      n: 2  },
+      { prov: "Morona Santiago",  n: 2  }, { prov: "Tungurahua",      n: 2  },
+      { prov: "Zamora Chinchipe", n: 2  }, { prov: "Imbabura",        n: 1  },
+      { prov: "Loja",             n: 1  }, { prov: "Napo",            n: 1  },
+      { prov: "Pastaza",          n: 1  }, { prov: "Sucumbíos",       n: 1  },
+    ],
+    avanceSemanal: [
+      { dia: "L 25/05", aplicados: 0,    acum: 0,     pct: 0  },
+      { dia: "M 26/05", aplicados: 3353, acum: 3353,  pct: 7  },
+      { dia: "X 27/05", aplicados: 4504, acum: 7857,  pct: 15 },
+      { dia: "J 28/05", aplicados: 4184, acum: 12041, pct: 23 },
+      { dia: "V 29/05", aplicados: 2801, acum: 14842, pct: 29 },
+    ],
+    // Cobertura diaria 29/05
+    diaCobPct: 96.02,
+    diaAplicados: 2801,
+    diaProgramados: 2917,
+    diaAusentes: 79,
+    diaNoAplicados: 35,
+    diaReprogramados: 2,
+    diaLabsTotal: 596,
+    diaLabsInicio: 199,
+    diaLabsInicioPct: 100.00,
+    diaSesiones: [
+      { sesion: "S1", total: 1275, aplicado: 1232, pct: 96.63 },
+      { sesion: "S2", total: 1279, aplicado: 1232, pct: 96.33 },
+      { sesion: "S3", total: 191,  aplicado: 174,  pct: 91.10 },
+      { sesion: "S4", total: 172,  aplicado: 163,  pct: 94.77 },
+    ],
+    diaEstProgramados: 25673,
+    diaEstAplicados:   14191,  diaEstAplicadosPct: 55.28,
+    diaEstParcial: 329,        diaEstParcialPct: 1.28,
+    diaEstAusentes: 175,
+    diaEstReprogramados: 817,  diaEstReprogramadosPct: 3.18,
+    diaEstPorAplicar: 10044,   diaEstPorAplicarPct: 39.12,
+    diaEstPie: [
+      { name: "Aplicado",        value: 14191, pct: "55,28%", color: "#1a56a0" },
+      { name: "Parc. aplicado",  value: 329,   pct: "1,28%",  color: "#f0a500" },
+      { name: "Reprogramado",    value: 817,   pct: "3,18%",  color: "#8e44ad" },
+      { name: "Ausente",         value: 175,   pct: "0,68%",  color: "#e07b3a" },
+      { name: "Por aplicar",     value: 10044, pct: "39,12%", color: "#c8d6e5" },
+    ],
+    diaAusentismoObs: [
+      { motivo: "Ausente",        n: 45 },
+      { motivo: "Calamidad",      n: 13 },
+      { motivo: "Enfermedad",     n: 10 },
+      { motivo: "Maternidad",     n: 6  },
+      { motivo: "Deportista",     n: 2  },
+      { motivo: "Hospitalizado",  n: 2  },
+      { motivo: "Fuera del país", n: 1  },
+    ],
+    diaNoAplicadosObs: [
+      { obs: "Retirado",              n: 22, pct: "62,9%" },
+      { obs: "No pertenece a la IE",  n: 6,  pct: "17,1%" },
+      { obs: "Estudiante NEE",        n: 4,  pct: "11,4%" },
+      { obs: "Sin permiso padres",    n: 3,  pct: "8,6%"  },
+    ],
+    diaReprogramadosObs: [
+      { obs: "Cambio de fecha", n: 2, pct: "100%" },
+    ],
+    diaNoInicio: null,
+    diaNoInicioN: 0,
+    diaNotaSesion: null,
+  },
 };
 
 /* Orden cronológico de fechas disponibles */
-const FECHAS_ORDEN = ["19/05", "20/05", "21/05", "22/05", "26/05", "27/05", "28/05"]; // agregar nuevas fechas aquí
+const FECHAS_ORDEN = ["19/05", "20/05", "21/05", "22/05", "26/05", "27/05", "28/05", "29/05"]; // agregar nuevas fechas aquí
 
 /* ══════════════════════════════════════════════════════
    COMPONENTES

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
-  ResponsiveContainer, Cell, LineChart, Line, Legend
+  ResponsiveContainer, Cell, LineChart, Line, Legend, ComposedChart
 } from "recharts";
 
 /* ══════════════════════════════════════════════════════
@@ -1808,10 +1808,160 @@ const DATOS = {
     diaNoInicioN: 4,
     diaNotaSesion: "14 reprogramados por cambio de fecha; 4 sesiones sin iniciar de 121 (96,69% ejecutadas)",
   },
+
+  "09/06": {
+    corte: "9 de junio de 2026",
+    semana: "Semana 4",
+    soloDialy: false,
+    // Evaluaciones acumuladas
+    evalProgramadas: 51346,
+    evalAplicadas:   46159,   evalAplicadasPct: 89.90,
+    evalReprogramadas: 566,   evalReprogramadasPct: 1.10,
+    evalAusentes: 843,        evalAusentesPct: 1.64,
+    evalNoAplicado: 324,
+    evalEnAuditoria: 0,
+    evalPorAplicar: 3454,     evalPorAplicarPct: 6.73,
+    // Estudiantes acumulados
+    estProgramados: 25673,
+    estAplicados:   22484,    estAplicadosPct: 87.58,
+    estParcial: 1191,         estParcialPct: 4.64,
+    estAusentes: 290,
+    estReprogramados: 214,    estReprogramadosPct: 0.83,
+    estEnAuditoria: 0,
+    estPorAplicar: 1333,      estPorAplicarPct: 5.19,
+    globalPie: [
+      { name: "Aplicado",     value: 46159, pct: "89,90%", color: C.aplicado     },
+      { name: "Reprogramado", value: 566,   pct: "1,10%",  color: C.reprogramado },
+      { name: "Ausente",      value: 843,   pct: "1,64%",  color: C.ausente      },
+      { name: "No aplicado",  value: 324,   pct: "0,63%",  color: C.noAplicado   },
+      { name: "Por aplicar",  value: 3454,  pct: "6,73%",  color: C.porAplicar   },
+    ],
+    // Subniveles
+    subniveles: [
+      { nivel: "Bachillerato", aplicado: 11688, total: 12480, pct: 93.65 },
+      { nivel: "Superior",     aplicado: 11887, total: 13274, pct: 89.55 },
+      { nivel: "Media",        aplicado: 11475, total: 12902, pct: 88.94 },
+      { nivel: "Elemental",    aplicado: 11109, total: 12690, pct: 87.54 },
+    ],
+    // Sostenimiento
+    sostenimiento: [
+      { tipo: "Municipal",     pct: 95.07, aplicado: 8959,  total: 9424  },
+      { tipo: "Fiscomisional", pct: 92.84, aplicado: 10432, total: 11236 },
+      { tipo: "Fiscal",        pct: 88.23, aplicado: 15362, total: 17412 },
+      { tipo: "Particular",    pct: 85.93, aplicado: 11406, total: 13274 },
+    ],
+    // Área
+    areaUrbana: { aplicado: 29853, total: 32716, pct: 91.25 },
+    areaRural:  { aplicado: 16306, total: 18630, pct: 87.53 },
+    // Provincias
+    provincias: [
+      { provincia: "Bolívar",      pct: 99.72, aplicado: 353,  programado: 354   },
+      { provincia: "Cañar",        pct: 98.35, aplicado: 1192, programado: 1212  },
+      { provincia: "Zamora Ch.",   pct: 96.47, aplicado: 355,  programado: 368   },
+      { provincia: "Imbabura",     pct: 94.67, aplicado: 3039, programado: 3210  },
+      { provincia: "Carchi",       pct: 92.59, aplicado: 1237, programado: 1336  },
+      { provincia: "Pastaza",      pct: 92.14, aplicado: 586,  programado: 636   },
+      { provincia: "Pichincha",    pct: 91.99, aplicado: 23885,programado: 25964 },
+      { provincia: "Azuay",        pct: 88.39, aplicado: 3638, programado: 4116  },
+      { provincia: "Loja",         pct: 88.02, aplicado: 2380, programado: 2704  },
+      { provincia: "Tungurahua",   pct: 87.97, aplicado: 2880, programado: 3274  },
+      { provincia: "Chimborazo",   pct: 86.91, aplicado: 1547, programado: 1780  },
+      { provincia: "Cotopaxi",     pct: 85.92, aplicado: 1806, programado: 2102  },
+      { provincia: "Napo",         pct: 85.42, aplicado: 984,  programado: 1152  },
+      { provincia: "Sucumbíos",    pct: 83.71, aplicado: 899,  programado: 1074  },
+      { provincia: "Morona S.",    pct: 71.26, aplicado: 647,  programado: 908   },
+      { provincia: "Orellana",     pct: 63.24, aplicado: 731,  programado: 1156  },
+    ],
+    // Labs
+    labTotal: 596,
+    labAplicados: 515,    labAplicadosPct: 86.41,
+    labParcial: 23,       labParcialPct: 3.86,
+    labPorAplicar: 57,    labPorAplicarPct: 9.56,
+    labBajo95: 73,
+    labBajo90: 15,
+    labsBajo95: [
+      { prov: "Pichincha",        n: 39 }, { prov: "Azuay",           n: 8  },
+      { prov: "Loja",             n: 4  }, { prov: "Napo",             n: 4  },
+      { prov: "Carchi",           n: 3  }, { prov: "Chimborazo",       n: 3  },
+      { prov: "Morona Santiago",  n: 3  }, { prov: "Sucumbíos",        n: 3  },
+      { prov: "Zamora Chinchipe", n: 2  }, { prov: "Imbabura",         n: 1  },
+      { prov: "Orellana",         n: 1  }, { prov: "Pastaza",          n: 1  },
+      { prov: "Tungurahua",       n: 1  },
+    ],
+    avanceSemanal: [
+      { dia: "L 18/05", aplicados: 165,  acum: 165,   pct: 0  },
+      { dia: "M 19/05", aplicados: 3885, acum: 4050,  pct: 8  },
+      { dia: "X 20/05", aplicados: 4045, acum: 8095,  pct: 16 },
+      { dia: "J 21/05", aplicados: 3033, acum: 11128, pct: 22 },
+      { dia: "V 22/05", aplicados: 2779, acum: 13907, pct: 27 },
+      { dia: "M 26/05", aplicados: 3405, acum: 17312, pct: 34 },
+      { dia: "X 27/05", aplicados: 4521, acum: 21833, pct: 43 },
+      { dia: "J 28/05", aplicados: 4191, acum: 26024, pct: 51 },
+      { dia: "V 29/05", aplicados: 2827, acum: 28851, pct: 56 },
+      { dia: "L 01/06", aplicados: 1111, acum: 29962, pct: 58 },
+      { dia: "M 02/06", aplicados: 4013, acum: 33975, pct: 66 },
+      { dia: "X 03/06", aplicados: 3787, acum: 37762, pct: 74 },
+      { dia: "J 04/06", aplicados: 2664, acum: 40426, pct: 79 },
+      { dia: "V 05/06", aplicados: 1805, acum: 42231, pct: 82 },
+      { dia: "L 08/06", aplicados: 1658, acum: 43889, pct: 85 },
+      { dia: "M 09/06", aplicados: 2185, acum: 46074, pct: 90 },
+      { dia: "X 10/06", aplicados: 35,   acum: 46109, pct: 90 }, // parcial al corte
+      { dia: "J 11/06", aplicados: 50,   acum: 46159, pct: 90 }, // parcial al corte
+    ],
+    // Cobertura diaria 09/06
+    diaCobPct: 91.04,
+    diaAplicados: 2185,
+    diaProgramados: 2400,
+    diaAusentes: 59,
+    diaNoAplicados: 13,
+    diaReprogramados: 143,
+    diaLabsTotal: 184,
+    diaLabsInicio: 170,
+    diaLabsInicioPct: 92.39,
+    diaSesiones: [
+      { sesion: "S1", total: 1147, aplicado: 1099, pct: 95.82 },
+      { sesion: "S2", total: 1044, aplicado: 931,  pct: 89.18 },
+      { sesion: "S3", total: 131,  aplicado: 104,  pct: 79.39 },
+      { sesion: "S4", total: 78,   aplicado: 51,   pct: 65.38 },
+    ],
+    diaEstProgramados: 25673,
+    diaEstAplicados:   22484,  diaEstAplicadosPct: 87.58,
+    diaEstParcial: 1191,       diaEstParcialPct: 4.64,
+    diaEstAusentes: 290,
+    diaEstReprogramados: 214,  diaEstReprogramadosPct: 0.83,
+    diaEstPorAplicar: 1333,    diaEstPorAplicarPct: 5.19,
+    diaEstPie: [
+      { name: "Aplicado",        value: 22484, pct: "87,58%", color: "#1a56a0" },
+      { name: "Parc. aplicado",  value: 1191,  pct: "4,64%",  color: "#f0a500" },
+      { name: "Reprogramado",    value: 214,   pct: "0,83%",  color: "#8e44ad" },
+      { name: "Ausente",         value: 290,   pct: "1,13%",  color: "#e07b3a" },
+      { name: "Por aplicar",     value: 1333,  pct: "5,19%",  color: "#c8d6e5" },
+    ],
+    diaAusentismoObs: [
+      { motivo: "Ausente",        n: 29 },
+      { motivo: "Enfermedad",     n: 20 },
+      { motivo: "Calamidad",      n: 4  },
+      { motivo: "Fuera del país", n: 4  },
+      { motivo: "Deportista",     n: 1  },
+      { motivo: "Hospitalizado",  n: 1  },
+    ],
+    diaNoAplicadosObs: [
+      { obs: "Retirado",       n: 11, pct: "84,6%" },
+      { obs: "Estudiante NEE", n: 2,  pct: "15,4%" },
+    ],
+    diaReprogramadosObs: [
+      { obs: "Falla eléctrica",                n: 97, pct: "67,8%" },
+      { obs: "Cambio de fecha de aplicación",  n: 35, pct: "24,5%" },
+      { obs: "Falla técnica",                  n: 11, pct: "7,7%"  },
+    ],
+    diaNoInicio: "Falla eléctrica (6) / IE difícil acceso (2) / Sin registro (6)",
+    diaNoInicioN: 14,
+    diaNotaSesion: "143 reprogramados (falla eléctrica 67,8%); 14 sesiones sin iniciar de 184 (92,39% ejecutadas)",
+  },
 };
 
 /* Orden cronológico de fechas disponibles */
-const FECHAS_ORDEN = ["19/05", "20/05", "21/05", "22/05", "26/05", "27/05", "28/05", "29/05", "01/06", "02/06", "03/06", "04/06", "05/06", "08/06"]; // agregar nuevas fechas aquí
+const FECHAS_ORDEN = ["19/05", "20/05", "21/05", "22/05", "26/05", "27/05", "28/05", "29/05", "01/06", "02/06", "03/06", "04/06", "05/06", "08/06", "09/06"]; // agregar nuevas fechas aquí
 
 /* ══════════════════════════════════════════════════════
    COMPONENTES
@@ -2118,20 +2268,40 @@ export default function SestDashboard() {
 
             {/* Avance acumulado */}
             <Card>
-              <ST>Avance por día</ST>
-              <ResponsiveContainer width="100%" height={190}>
-                <BarChart data={d.avanceSemanal} barSize={26}>
+              <ST>Avance acumulado por día</ST>
+              {d.avanceSemanal && d.avanceSemanal.length > 0 ? (<>
+              <ResponsiveContainer width="100%" height={210}>
+                <ComposedChart data={d.avanceSemanal} barSize={22} margin={{ top: 6, right: 4, left: 0, bottom: 0 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke={C.border} vertical={false} />
-                  <XAxis dataKey="dia" tick={{ fontSize: 10, fill: C.muted }} />
-                  <YAxis tick={{ fontSize: 10, fill: C.muted }} width={36} />
+                  <XAxis dataKey="dia" tick={{ fontSize: 9, fill: C.muted }}
+                    interval={0} angle={-38} textAnchor="end" height={48} />
+                  <YAxis yAxisId="left" tick={{ fontSize: 10, fill: C.muted }} width={38} />
+                  <YAxis yAxisId="right" orientation="right" domain={[0, 100]}
+                    tickFormatter={v => `${v}%`} tick={{ fontSize: 10, fill: C.muted }} width={40} />
                   <Tooltip content={<CTip />} />
-                  <Bar dataKey="aplicados" name="Aplicados" radius={[4, 4, 0, 0]}>
+                  <Bar yAxisId="left" dataKey="aplicados" name="Aplicados" radius={[4, 4, 0, 0]}>
                     {d.avanceSemanal.map((_, i) => (
                       <Cell key={i} fill={i === d.avanceSemanal.length - 1 ? C.amarillo : C.aplicado} />
                     ))}
                   </Bar>
-                </BarChart>
+                  <Line yAxisId="right" type="monotone" dataKey="pct" name="% acumulado"
+                    stroke={C.headerFrom} strokeWidth={2.5}
+                    dot={{ r: 2.5, fill: C.headerFrom }} activeDot={{ r: 4 }} />
+                </ComposedChart>
               </ResponsiveContainer>
+              <div style={{ display: "flex", justifyContent: "center", gap: 18, marginTop: 2,
+                fontFamily: FONT_BODY, fontSize: 11, color: C.muted }}>
+                <span><span style={{ display: "inline-block", width: 10, height: 10,
+                  background: C.aplicado, borderRadius: 2, marginRight: 5, verticalAlign: "middle" }} />Aplicados/día</span>
+                <span><span style={{ display: "inline-block", width: 14, height: 3,
+                  background: C.headerFrom, marginRight: 5, verticalAlign: "middle" }} />% acumulado</span>
+              </div>
+              </>) : (
+                <div style={{ padding: "28px 12px", textAlign: "center", fontFamily: FONT_BODY,
+                  fontSize: 13, color: C.muted }}>
+                  Este corte no incluye serie de avance acumulado por día.
+                </div>
+              )}
             </Card>
           </div>
 

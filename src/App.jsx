@@ -2557,10 +2557,217 @@ const DATOS = {
     diaNoInicioN: 2,
     diaNotaSesion: "Jornada de recuperación: 17 reprogramados por cambio de fecha; 2 sesiones sin iniciar de 34 por falta de técnico aplicador (94,12% ejecutadas)",
   },
+
+  /* ─────────────────────────────────────────────────────
+     19/06  — CIERRE PRELIMINAR del proceso
+     · Estado global resuelto (solo Aplicado/Ausente/No aplicado)
+     · Secciones de sesión/ausentismo ahora CONSOLIDADAS
+     · Incluye módulo nuevo: Factores Asociados (54.713 registros)
+  ───────────────────────────────────────────────────── */
+  "19/06": {
+    corte: "19 de junio de 2026",
+    semana: "Cierre preliminar",
+    soloDialy: false,
+    cierre: true,
+    // Evaluaciones acumuladas (cierre)
+    evalProgramadas: 51346,
+    evalAplicadas:   50071,   evalAplicadasPct: 97.52,
+    evalReprogramadas: 0,     evalReprogramadasPct: 0,
+    evalAusentes: 874,        evalAusentesPct: 1.70,
+    evalNoAplicado: 401,
+    evalEnAuditoria: 0,
+    evalPorAplicar: 0,        evalPorAplicarPct: 0,
+    // Estudiantes acumulados (cierre)
+    estProgramados: 25673,
+    estAplicados:   24853,    estAplicadosPct: 96.81,
+    estParcial: 365,          estParcialPct: 1.42,
+    estAusentes: 276,
+    estReprogramados: 0,      estReprogramadosPct: 0,
+    estEnAuditoria: 0,
+    estPorAplicar: 0,         estPorAplicarPct: 0,
+    globalPie: [
+      { name: "Aplicado",    value: 50071, pct: "97,52%", color: C.aplicado   },
+      { name: "Ausente",     value: 874,   pct: "1,70%",  color: C.ausente    },
+      { name: "No aplicado", value: 401,   pct: "0,78%",  color: C.noAplicado },
+    ],
+    // Subniveles
+    subniveles: [
+      { nivel: "Media",        aplicado: 12670, total: 12902, pct: 98.20 },
+      { nivel: "Elemental",    aplicado: 12403, total: 12690, pct: 97.74 },
+      { nivel: "Bachillerato", aplicado: 12177, total: 12480, pct: 97.57 },
+      { nivel: "Superior",     aplicado: 12821, total: 13274, pct: 96.59 },
+    ],
+    // Sostenimiento
+    sostenimiento: [
+      { tipo: "Fiscomisional", pct: 98.26, aplicado: 11040, total: 11236 },
+      { tipo: "Municipal",     pct: 98.08, aplicado: 9243,  total: 9424  },
+      { tipo: "Particular",    pct: 97.20, aplicado: 12902, total: 13274 },
+      { tipo: "Fiscal",        pct: 96.98, aplicado: 16886, total: 17412 },
+    ],
+    // Área
+    areaUrbana: { aplicado: 31971, total: 32716, pct: 97.72 },
+    areaRural:  { aplicado: 18100, total: 18630, pct: 97.16 },
+    // Provincias
+    provincias: [
+      { provincia: "Bolívar",      pct: 99.72, aplicado: 353,   programado: 354   },
+      { provincia: "Cañar",        pct: 99.42, aplicado: 1205,  programado: 1212  },
+      { provincia: "Imbabura",     pct: 98.94, aplicado: 3176,  programado: 3210  },
+      { provincia: "Morona S.",    pct: 98.68, aplicado: 896,   programado: 908   },
+      { provincia: "Tungurahua",   pct: 98.38, aplicado: 3221,  programado: 3274  },
+      { provincia: "Cotopaxi",     pct: 98.33, aplicado: 2067,  programado: 2102  },
+      { provincia: "Chimborazo",   pct: 97.98, aplicado: 1744,  programado: 1780  },
+      { provincia: "Carchi",       pct: 97.83, aplicado: 1307,  programado: 1336  },
+      { provincia: "Loja",         pct: 97.78, aplicado: 2644,  programado: 2704  },
+      { provincia: "Napo",         pct: 97.74, aplicado: 1126,  programado: 1152  },
+      { provincia: "Pastaza",      pct: 97.48, aplicado: 620,   programado: 636   },
+      { provincia: "Pichincha",    pct: 97.27, aplicado: 25255, programado: 25964 },
+      { provincia: "Azuay",        pct: 97.11, aplicado: 3997,  programado: 4116  },
+      { provincia: "Zamora Ch.",   pct: 96.47, aplicado: 355,   programado: 368   },
+      { provincia: "Orellana",     pct: 95.16, aplicado: 1100,  programado: 1156  },
+      { provincia: "Sucumbíos",    pct: 93.58, aplicado: 1005,  programado: 1074  },
+    ],
+    // Labs (100% aplicados)
+    labTotal: 596,
+    labAplicados: 596,    labAplicadosPct: 100.00,
+    labParcial: 0,        labParcialPct: 0,
+    labPorAplicar: 0,     labPorAplicarPct: 0,
+    labBajo95: 90,
+    labBajo90: 18,
+    labsBajo95: [
+      { prov: "Pichincha",        n: 44 }, { prov: "Azuay",           n: 11 },
+      { prov: "Loja",             n: 5  }, { prov: "Napo",             n: 5  },
+      { prov: "Orellana",         n: 4  }, { prov: "Sucumbíos",        n: 4  },
+      { prov: "Carchi",           n: 3  }, { prov: "Chimborazo",       n: 3  },
+      { prov: "Morona Santiago",  n: 3  }, { prov: "Tungurahua",       n: 3  },
+      { prov: "Zamora Chinchipe", n: 2  }, { prov: "Cañar",            n: 1  },
+      { prov: "Imbabura",         n: 1  }, { prov: "Pastaza",          n: 1  },
+    ],
+    avanceSemanal: [
+      { dia: "L 18/05", aplicados: 165,  acum: 165,   pct: 0  },
+      { dia: "M 19/05", aplicados: 3885, acum: 4050,  pct: 8  },
+      { dia: "X 20/05", aplicados: 4045, acum: 8095,  pct: 16 },
+      { dia: "J 21/05", aplicados: 3033, acum: 11128, pct: 22 },
+      { dia: "V 22/05", aplicados: 2779, acum: 13907, pct: 27 },
+      { dia: "M 26/05", aplicados: 3405, acum: 17312, pct: 34 },
+      { dia: "X 27/05", aplicados: 4522, acum: 21834, pct: 43 },
+      { dia: "J 28/05", aplicados: 4191, acum: 26025, pct: 51 },
+      { dia: "V 29/05", aplicados: 2827, acum: 28852, pct: 56 },
+      { dia: "L 01/06", aplicados: 1111, acum: 29963, pct: 58 },
+      { dia: "M 02/06", aplicados: 4014, acum: 33977, pct: 66 },
+      { dia: "X 03/06", aplicados: 3787, acum: 37764, pct: 74 },
+      { dia: "J 04/06", aplicados: 2664, acum: 40428, pct: 79 },
+      { dia: "V 05/06", aplicados: 1826, acum: 42254, pct: 82 },
+      { dia: "L 08/06", aplicados: 1698, acum: 43952, pct: 86 },
+      { dia: "M 09/06", aplicados: 2275, acum: 46227, pct: 90 },
+      { dia: "X 10/06", aplicados: 1251, acum: 47478, pct: 92 },
+      { dia: "J 11/06", aplicados: 974,  acum: 48452, pct: 94 },
+      { dia: "V 12/06", aplicados: 538,  acum: 48990, pct: 95 },
+      { dia: "L 15/06", aplicados: 469,  acum: 49459, pct: 96 },
+      { dia: "M 16/06", aplicados: 441,  acum: 49900, pct: 97 },
+      { dia: "X 17/06", aplicados: 18,   acum: 49918, pct: 97 },
+      { dia: "J 18/06", aplicados: 87,   acum: 50005, pct: 97 },
+      { dia: "V 19/06", aplicados: 66,   acum: 50071, pct: 98 },
+    ],
+    // "Diario" en este corte = CONSOLIDADO de cierre (secciones 6–8 del reporte)
+    diaCobPct: 97.52,
+    diaAplicados: 50071,
+    diaProgramados: 51346,
+    diaAusentes: 874,
+    diaNoAplicados: 401,
+    diaReprogramados: 0,
+    diaLabsTotal: 3708,         // sesiones totales del proceso (en 596 laboratorios)
+    diaLabsInicio: 3702,
+    diaLabsInicioPct: 99.84,
+    diaSesiones: [
+      { sesion: "S1", total: 23161, aplicado: 22622, pct: 97.67 },
+      { sesion: "S2", total: 21747, aplicado: 21217, pct: 97.56 },
+      { sesion: "S3", total: 3799,  aplicado: 3669,  pct: 96.58 },
+      { sesion: "S4", total: 2639,  aplicado: 2563,  pct: 97.12 },
+    ],
+    diaEstProgramados: 25673,
+    diaEstAplicados:   24853,  diaEstAplicadosPct: 96.81,
+    diaEstParcial: 365,        diaEstParcialPct: 1.42,
+    diaEstAusentes: 276,
+    diaEstReprogramados: 0,    diaEstReprogramadosPct: 0,
+    diaEstPorAplicar: 0,       diaEstPorAplicarPct: 0,
+    diaEstPie: [
+      { name: "Aplicado",       value: 24853, pct: "96,81%", color: "#1a56a0" },
+      { name: "Parc. aplicado", value: 365,   pct: "1,42%",  color: "#f0a500" },
+      { name: "Ausente",        value: 276,   pct: "1,08%",  color: "#e07b3a" },
+      { name: "No aplicado",    value: 179,   pct: "0,70%",  color: "#b0bec5" },
+    ],
+    diaAusentismoObs: [
+      { motivo: "Enfermedad",            n: 334 },
+      { motivo: "Ausente",               n: 241 },
+      { motivo: "Calamidad doméstica",   n: 100 },
+      { motivo: "Activ. propias IE",     n: 76  },
+      { motivo: "Hospitalizado",         n: 43  },
+      { motivo: "Fuera del país",        n: 39  },
+      { motivo: "Maternidad",            n: 21  },
+      { motivo: "Deportista",            n: 18  },
+      { motivo: "Sistema de protección", n: 2   },
+    ],
+    diaNoAplicadosObs: [
+      { obs: "Retirado",                   n: 234, pct: "58,4%" },
+      { obs: "Estudiante NEE",             n: 71,  pct: "17,7%" },
+      { obs: "No pertenece a la IE",       n: 38,  pct: "9,5%"  },
+      { obs: "Sin aplicador/falla eléct.", n: 35,  pct: "8,7%"  },
+      { obs: "Sin permiso de padres",      n: 21,  pct: "5,2%"  },
+      { obs: "No pertenece al grado",      n: 2,   pct: "0,5%"  },
+    ],
+    diaReprogramadosObs: [],
+    diaNoInicio: "Sin sustentantes (4) / Falla eléctrica (2)",
+    diaNoInicioN: 6,
+    diaNotaSesion: "Consolidado de cierre: 3.702 de 3.708 sesiones ejecutadas (99,84%) en 596 laboratorios; 6 sin iniciar (sin sustentantes/falla eléctrica)",
+    // ── Módulo Factores Asociados (cuestionario por actor) ──
+    factores: {
+      programados: 54713,
+      finalizado: 53756,  finalizadoPct: 98.25,
+      enProceso: 36,      enProcesoPct: 0.07,
+      noIniciado: 921,    noIniciadoPct: 1.68,
+      globalPie: [
+        { name: "Finalizado",  value: 53756, pct: "98,25%", color: C.aplicado   },
+        { name: "En proceso",  value: 36,    pct: "0,07%",  color: C.amarillo   },
+        { name: "No iniciado", value: 921,   pct: "1,68%",  color: C.noAplicado },
+      ],
+      actores: [
+        { actor: "Rector",       prog: 582,   fin: 581,   pct: 99.83 },
+        { actor: "Docente",      prog: 2785,  fin: 2774,  pct: 99.61 },
+        { actor: "Estudiante",   prog: 25673, fin: 25341, pct: 98.71 },
+        { actor: "Representante",prog: 25673, fin: 25060, pct: 97.61 },
+      ],
+      sostenimiento: [
+        { tipo: "Fiscomisional", prog: 11976, fin: 11917, pct: 99.51 },
+        { tipo: "Fiscal",        prog: 18783, fin: 18516, pct: 98.58 },
+        { tipo: "Municipal",     prog: 9775,  fin: 9618,  pct: 98.39 },
+        { tipo: "Particular",    prog: 14179, fin: 13705, pct: 96.66 },
+      ],
+      areaUrbano: { fin: 34302, prog: 34828, pct: 98.49 },
+      areaRural:  { fin: 19454, prog: 19885, pct: 97.83 },
+      provincias: [
+        { provincia: "Bolívar",      prog: 375,   fin: 375,   pct: 100.00 },
+        { provincia: "Loja",         prog: 2879,  fin: 2877,  pct: 99.93  },
+        { provincia: "Napo",         prog: 1231,  fin: 1229,  pct: 99.84  },
+        { provincia: "Cañar",        prog: 1283,  fin: 1279,  pct: 99.69  },
+        { provincia: "Imbabura",     prog: 3385,  fin: 3372,  pct: 99.62  },
+        { provincia: "Zamora Ch.",   prog: 407,   fin: 405,   pct: 99.51  },
+        { provincia: "Tungurahua",   prog: 3494,  fin: 3475,  pct: 99.46  },
+        { provincia: "Morona S.",    prog: 965,   fin: 959,   pct: 99.38  },
+        { provincia: "Cotopaxi",     prog: 2251,  fin: 2236,  pct: 99.33  },
+        { provincia: "Chimborazo",   prog: 1908,  fin: 1895,  pct: 99.32  },
+        { provincia: "Carchi",       prog: 1417,  fin: 1407,  pct: 99.29  },
+        { provincia: "Pastaza",      prog: 684,   fin: 678,   pct: 99.12  },
+        { provincia: "Orellana",     prog: 1235,  fin: 1213,  pct: 98.22  },
+        { provincia: "Azuay",        prog: 4454,  fin: 4371,  pct: 98.14  },
+        { provincia: "Sucumbíos",    prog: 1128,  fin: 1104,  pct: 97.87  },
+        { provincia: "Pichincha",    prog: 27617, fin: 26881, pct: 97.33  },
+      ],
+    },
+  },
 };
 
 /* Orden cronológico de fechas disponibles */
-const FECHAS_ORDEN = ["19/05", "20/05", "21/05", "22/05", "26/05", "27/05", "28/05", "29/05", "01/06", "02/06", "03/06", "04/06", "05/06", "08/06", "09/06", "10/06", "11/06", "12/06", "16/06"]; // agregar nuevas fechas aquí
+const FECHAS_ORDEN = ["19/05", "20/05", "21/05", "22/05", "26/05", "27/05", "28/05", "29/05", "01/06", "02/06", "03/06", "04/06", "05/06", "08/06", "09/06", "10/06", "11/06", "12/06", "16/06", "19/06"]; // agregar nuevas fechas aquí
 
 /* ══════════════════════════════════════════════════════
    COMPONENTES
@@ -2689,6 +2896,7 @@ const TABS = [
   { id: "general",     label: "General",      acum: true  },
   { id: "territorial", label: "Territorial",  acum: true  },
   { id: "muestra",     label: "Laboratorio",  acum: true  },
+  { id: "factores",    label: "Factores",     acum: true, soloSi: "factores" },
   { id: "diario",      label: "Diario",       acum: false },
 ];
 
@@ -2711,6 +2919,9 @@ export default function SestDashboard() {
   /* Datos del corte anterior (para deltas) */
   const prevKey = FECHAS_ORDEN[FECHAS_ORDEN.indexOf(fechaActual) - 1];
   const prev = prevKey ? DATOS[prevKey] : null;
+
+  /* Pestañas visibles: las condicionadas (soloSi) solo si el corte las trae */
+  const visibleTabs = TABS.filter(t => !t.soloSi || d[t.soloSi]);
 
   return (
     <div style={{ fontFamily: FONT_BODY, background: C.bg, minHeight: "100vh" }}>
@@ -2798,7 +3009,7 @@ export default function SestDashboard() {
 
       {/* TABS PRINCIPALES */}
       <div className="tabs">
-        {TABS.map(t => (
+        {visibleTabs.map(t => (
           <button key={t.id} className={`tbtn${tab === t.id ? " act" : ""}`}
             onClick={() => setTab(t.id)}
             style={{ display: "flex", alignItems: "center", gap: 5 }}>
@@ -3093,6 +3304,78 @@ export default function SestDashboard() {
         </>)}
 
 
+        {/* ════ FACTORES ASOCIADOS ════ */}
+        {tab === "factores" && d.factores && (() => {
+          const fa = d.factores;
+          return (<>
+            <div style={{ fontFamily: FONT_COND, fontSize: 12, fontWeight: 700, letterSpacing: 1.2,
+              color: C.muted, textTransform: "uppercase", marginBottom: 8, marginTop: 2 }}>
+              Factores asociados — cuestionario por actor
+            </div>
+            <div className="kpi4">
+              <KPI icon="📋" label="Programados"  value={fa.programados.toLocaleString("es-EC")} sub="registros (actores)" />
+              <KPI icon="✅" label="Finalizados"  value={fa.finalizado.toLocaleString("es-EC")}  sub={`${fa.finalizadoPct}% del total`}  color={C.aplicado} highlight />
+              <KPI icon="⏳" label="En proceso"   value={fa.enProceso.toLocaleString("es-EC")}   sub={`${fa.enProcesoPct}% del total`}   color={C.amarillo} />
+              <KPI icon="🚫" label="No iniciados" value={fa.noIniciado.toLocaleString("es-EC")}  sub={`${fa.noIniciadoPct}% del total`}  color={C.ausente}  />
+            </div>
+
+            <div className="two">
+              <Card>
+                <ST>Estado global — {fa.programados.toLocaleString("es-EC")} registros</ST>
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                  <PieDonut data={fa.globalPie} size={180} />
+                </div>
+              </Card>
+              <Card>
+                <ST>Finalizados por actor</ST>
+                {fa.actores.map(a => (
+                  <PBar key={a.actor} label={a.actor}
+                    sub={`${a.fin.toLocaleString("es-EC")} de ${a.prog.toLocaleString("es-EC")}`}
+                    pct={a.pct} color={a.actor === "Rector" || a.actor === "Docente" ? C.verde : C.aplicado} />
+                ))}
+              </Card>
+            </div>
+
+            <div className="asym">
+              <Card>
+                <ST>% Finalizado por provincia</ST>
+                <ResponsiveContainer width="100%" height={390}>
+                  <BarChart data={[...fa.provincias].sort((a, b) => b.pct - a.pct)}
+                    layout="vertical" barSize={12}>
+                    <CartesianGrid strokeDasharray="3 3" stroke={C.border} horizontal={false} />
+                    <XAxis type="number" domain={[95, 100]} tickFormatter={v => `${v}%`}
+                      tick={{ fontSize: 10, fill: C.muted }} />
+                    <YAxis type="category" dataKey="provincia" width={95}
+                      tick={{ fontSize: 11, fill: C.text }} />
+                    <Tooltip content={<CTip />} />
+                    <Bar dataKey="pct" name="% Finalizado" radius={[0, 4, 4, 0]}>
+                      {[...fa.provincias].sort((a, b) => b.pct - a.pct).map((p, i) => (
+                        <Cell key={i} fill={p.pct >= 99 ? C.verde : p.pct >= 98 ? C.aplicado : "#7a9cc0"} />
+                      ))}
+                    </Bar>
+                  </BarChart>
+                </ResponsiveContainer>
+              </Card>
+              <Card>
+                <ST>Por sostenimiento</ST>
+                {fa.sostenimiento.map(x => (
+                  <PBar key={x.tipo} label={x.tipo}
+                    sub={`${x.fin.toLocaleString("es-EC")} de ${x.prog.toLocaleString("es-EC")}`}
+                    pct={x.pct} color={x.tipo === "Fiscomisional" || x.tipo === "Municipal" ? C.verde : C.aplicado} />
+                ))}
+                <div style={{ marginTop: 12, padding: "8px 12px",
+                  background: C.verdeLight, border: `1px solid ${C.verdeBorder}`, borderRadius: 8 }}>
+                  <span style={{ fontSize: 12, color: "#1a7a48", fontWeight: 600 }}>
+                    Urbano: <strong>{fa.areaUrbano.pct}%</strong>
+                    &nbsp;|&nbsp; Rural: <strong>{fa.areaRural.pct}%</strong>
+                  </span>
+                </div>
+              </Card>
+            </div>
+          </>);
+        })()}
+
+
         {/* ════ DIARIO ════ — réplica exacta de la estructura de General */}
         {tab === "diario" && (<>
 
@@ -3119,13 +3402,19 @@ export default function SestDashboard() {
             <span style={{ fontSize: 16 }}>📅</span>
             <div>
               <div style={{ fontFamily: FONT_COND, fontSize: 16, fontWeight: 800, color: "#fff" }}>
-                Cobertura — {dd.corte}
+                {dd.cierre ? "Consolidado de cierre" : "Cobertura"} — {dd.corte}
               </div>
               <div style={{ fontFamily: FONT_BODY, fontSize: 11, color: "#a8c8f0" }}>
-                {dd.semana} · Régimen Sierra-Amazonía
+                {dd.cierre
+                  ? "Cifras consolidadas del proceso · sesión y ausentismo acumulados"
+                  : `${dd.semana} · Régimen Sierra-Amazonía`}
               </div>
             </div>
-            {fechaDiario === fechaActual && (
+            {dd.cierre ? (
+              <span style={{ background: C.verde, color: "#fff", borderRadius: 20,
+                padding: "2px 10px", fontSize: 11, fontWeight: 700, marginLeft: "auto",
+                whiteSpace: "nowrap" }}>CIERRE</span>
+            ) : fechaDiario === fechaActual && (
               <span style={{ background: C.amarillo, color: "#fff", borderRadius: 20,
                 padding: "2px 10px", fontSize: 11, fontWeight: 700, marginLeft: "auto",
                 whiteSpace: "nowrap" }}>ÚLTIMO CORTE</span>
@@ -3162,7 +3451,7 @@ export default function SestDashboard() {
                Espejo de "Estado global + avance acumulado" */}
           <div className="two">
             <Card>
-              <ST>Estado del día — {dd.diaProgramados.toLocaleString("es-EC")} evaluaciones</ST>
+              <ST>{dd.cierre ? "Estado consolidado" : "Estado del día"} — {dd.diaProgramados.toLocaleString("es-EC")} evaluaciones</ST>
               <div style={{ display: "flex", justifyContent: "center" }}>
                 <PieDonut data={[
                   { name: "Aplicado",     value: dd.diaAplicados,
